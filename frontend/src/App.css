@@ -15,24 +15,60 @@
 
 a {
   font-weight: 500;
-  color: #646cff;
+  color: #ffacb9;
   text-decoration: inherit;
 }
+
 a:hover {
   color: #535bf2;
 }
 
 body {
   margin: 0;
-  display: flex;
-  place-items: center;
   min-width: 320px;
   min-height: 100vh;
 }
 
+.container {
+  display: flex; /* Use flexbox to align items horizontally */
+  flex-direction: row; /* Ensure it's a horizontal row */
+  justify-content: space-between; /* Create space between the form and table */
+  align-items: flex-start; /* Align items at the top */
+  gap: 20px; /* Add space between form and table */
+  padding: 20px;
+  width: 100%; /* Full width */
+  max-width: 1200px; /* Max width for the container */
+  margin: 20px auto; /* Center container horizontally with 20px margin */
+}
+
+.task-table {
+  width: 60%; /* Set the width of the table container */
+}
+
+form {
+  width: 35%; /* Set the width of the form container */
+  display: flex;
+  flex-direction: column; /* Stack form elements vertically */
+}
+
+table {
+  width: 100%; /* Ensure the table takes full width inside its container */
+  margin-right: 20px; /* Add space between table and form */
+}
+
+input, textarea, select, button {
+  margin-bottom: 15px; /* Add space between form elements */
+}
+
 h1 {
-  font-size: 3.2em;
+  font-size: 10em;
   line-height: 1.1;
+  color: #ffacb9;
+}
+
+.action-buttons {
+  display: flex; /* Align buttons in a row */
+  gap: 10px; /* Add space between the buttons */
 }
 
 button {
@@ -42,16 +78,42 @@ button {
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: #1a1a1a;
+  background-color: var(--primary-color);
+  color: white;
   cursor: pointer;
-  transition: border-color 0.25s;
+  transition: background-color var(--transition-speed),
+    box-shadow var(--transition-speed), transform var(--transition-speed);
 }
+
+button.delete-btn {
+  background-color: var(--danger-color);
+  transition: background-color var(--transition-speed), transform var(--transition-speed);
+}
+
+button.delete-btn:hover {
+  background-color: var(--danger-hover);
+}
+
 button:hover {
-  border-color: #646cff;
+  background-color: var(--secondary-color);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+  transform: translateY(-5px);
 }
+
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
+}
+
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column; /* Stack table and form on top of each other for small screens */
+  }
+
+  .task-table,
+  form {
+    width: 100%; /* Full width on small screens */
+  }
 }
 
 @media (prefers-color-scheme: light) {
